@@ -30,7 +30,7 @@ implementation
 
 procedure TForm2.ReceberMensagem(const Msg: string);
 begin
-  lblMensagem.Caption:= 'Mensagem recebida: ' + Msg;
+  lblMensagem.Caption:= Msg;
 end;
 
 procedure TForm2.btnCancelarClick(Sender: TObject);
