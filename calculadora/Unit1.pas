@@ -8,18 +8,23 @@ uses
 
 type
   TForm1 = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
+    btnSoma: TButton;
+    btnSub: TButton;
+    btnMult: TButton;
+    btnDiv: TButton;
     Edit1: TEdit;
     Edit2: TEdit;
     Label1: TLabel;
     Label2: TLabel;
+    lblResultado: TLabel;
+    Label3: TLabel;
+    procedure btnSomaClick(Sender: TObject);
+    procedure btnSubClick(Sender: TObject);
+    procedure btnMultClick(Sender: TObject);
+    procedure btnDivClick(Sender: TObject);
   private
-    { Private declarations }
+    function ObterNumeros(out num1, num2: Double): Boolean;
   public
-    { Public declarations }
   end;
 
 var
@@ -29,4 +34,56 @@ implementation
 
 {$R *.dfm}
 
+// Função para obter os números
+function TForm1.ObterNumeros(out num1, num2: Double): Boolean;
+begin
+  // Validar as entradas
+  Result := TryStrToFloat(Edit1.Text, num1) and TryStrToFloat(Edit2.Text, num2);
+  if not Result then
+    ShowMessage('Digite valores numéricos válidos!');
+end;
+
+// Soma
+procedure TForm1.btnSomaClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  if ObterNumeros(num1, num2) then
+    lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 + num2);
+end;
+
+// Subtração
+procedure TForm1.btnSubClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  if ObterNumeros(num1, num2) then
+    lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 - num2);
+end;
+
+// Multiplicação
+procedure TForm1.btnMultClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  if ObterNumeros(num1, num2) then
+    lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 * num2);
+end;
+
+// Divisão
+procedure TForm1.btnDivClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  //garantir que não exista uma divisão por 0
+  if ObterNumeros(num1, num2) then
+  begin
+    if num2 = 0 then
+      ShowMessage('Erro: Divisão por zero!')
+    else
+      lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 / num2);
+  end;
+end;
+
 end.
+

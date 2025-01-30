@@ -1,0 +1,86 @@
+unit Unit1;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
+
+type
+  TForm1 = class(TForm)
+    btnSoma: TButton;
+    btnSub: TButton;
+    btnMult: TButton;
+    btnDiv: TButton;
+    Edit1: TEdit;
+    Edit2: TEdit;
+    Label1: TLabel;
+    Label2: TLabel;
+    lblResultado: TLabel; // Adicionando um label para exibir o resultado
+    procedure btnSomaClick(Sender: TObject);
+    procedure btnSubClick(Sender: TObject);
+    procedure btnMultClick(Sender: TObject);
+    procedure btnDivClick(Sender: TObject);
+  private
+    function ObterNumeros(out num1, num2: Double): Boolean;
+  public
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+// Função para obter os números dos Edit1 e Edit2
+function TForm1.ObterNumeros(out num1, num2: Double): Boolean;
+begin
+  Result := TryStrToFloat(Edit1.Text, num1) and TryStrToFloat(Edit2.Text, num2);
+  if not Result then
+    ShowMessage('Digite valores numéricos válidos!');
+end;
+
+// Evento de clique do botão de soma
+procedure TForm1.btnSomaClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  if ObterNumeros(num1, num2) then
+    lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 + num2);
+end;
+
+// Evento de clique do botão de subtração
+procedure TForm1.btnSubClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  if ObterNumeros(num1, num2) then
+    lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 - num2);
+end;
+
+// Evento de clique do botão de multiplicação
+procedure TForm1.btnMultClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  if ObterNumeros(num1, num2) then
+    lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 * num2);
+end;
+
+// Evento de clique do botão de divisão
+procedure TForm1.btnDivClick(Sender: TObject);
+var
+  num1, num2: Double;
+begin
+  if ObterNumeros(num1, num2) then
+  begin
+    if num2 = 0 then
+      ShowMessage('Erro: Divisão por zero!')
+    else
+      lblResultado.Caption := 'Resultado: ' + FloatToStr(num1 / num2);
+  end;
+end;
+
+end.
+
