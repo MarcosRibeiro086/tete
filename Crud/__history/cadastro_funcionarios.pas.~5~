@@ -1,0 +1,45 @@
+unit cadastro_funcionarios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.ExtCtrls, Vcl.DBCtrls, FireDAC.Comp.DataSet, Vcl.Grids, Vcl.DBGrids,
+  Vcl.Buttons, FireDAC.Comp.Client;
+
+type
+  TFormFuncionarios = class(TForm)
+    FDConnection1: TFDConnection;
+    FDQueryFuncionarios: TFDQuery;
+    DataSourceFuncionarios: TDataSource;
+    DBNavigatorFuncionarios: TDBNavigator;
+    DBGridFuncionarios: TDBGrid;
+    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
+    Label1: TLabel;
+    DBEdit1: TDBEdit;
+    Label2: TLabel;
+    DBEdit2: TDBEdit;
+    Label3: TLabel;
+    DBEdit3: TDBEdit;
+    Label4: TLabel;
+    DBEdit4: TDBEdit;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  FormFuncionarios: TFormFuncionarios;
+
+implementation
+
+{$R *.dfm}
+
+end.
+

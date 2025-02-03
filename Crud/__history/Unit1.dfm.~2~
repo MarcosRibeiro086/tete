@@ -1,0 +1,115 @@
+object Form1: TForm1
+  Left = 0
+  Top = 0
+  Caption = 'Form1'
+  ClientHeight = 441
+  ClientWidth = 624
+  Color = clBtnFace
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  Font.Style = []
+  TextHeight = 15
+  object editCodigo: TEdit
+    Left = 24
+    Top = 16
+    Width = 121
+    Height = 23
+    TabOrder = 0
+    Text = 'editCodigo'
+  end
+  object editNome: TEdit
+    Left = 376
+    Top = 16
+    Width = 121
+    Height = 23
+    TabOrder = 1
+    Text = 'editNome'
+  end
+  object editCPF: TEdit
+    Left = 192
+    Top = 16
+    Width = 121
+    Height = 23
+    TabOrder = 2
+    Text = 'editCPF'
+  end
+  object dtNascimento: TDateTimePicker
+    Left = 160
+    Top = 64
+    Width = 186
+    Height = 23
+    Date = 45688.000000000000000000
+    Time = 0.592453645833302300
+    TabOrder = 3
+  end
+  object btnSalvar: TButton
+    Left = 24
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'btnSalvar'
+    TabOrder = 4
+  end
+  object btnListar: TButton
+    Left = 528
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'btnListar'
+    TabOrder = 5
+  end
+  object btnExcluir: TButton
+    Left = 376
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'btnExcluir'
+    TabOrder = 6
+  end
+  object btnAlterar: TButton
+    Left = 200
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'btnAlterar'
+    TabOrder = 7
+  end
+  object DBGrid1: TGridPanel
+    Left = 200
+    Top = 232
+    Width = 185
+    Height = 41
+    Caption = 'DBGrid1'
+    ColumnCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
+    ControlCollection = <>
+    RowCollection = <
+      item
+        Value = 50.000000000000000000
+      end
+      item
+        Value = 50.000000000000000000
+      end>
+    TabOrder = 8
+  end
+  object DataSource1: TDataSource
+    Left = 40
+    Top = 336
+  end
+  object FDConnection1: TFDConnection
+    Left = 328
+    Top = 360
+  end
+  object FDQuery1: TFDQuery
+    Connection = FDConnection1
+    Left = 456
+    Top = 384
+  end
+end

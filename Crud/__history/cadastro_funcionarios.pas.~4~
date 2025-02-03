@@ -1,0 +1,77 @@
+unit cadastro_funcionarios;
+
+interface
+
+uses
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.MySQL,
+  FireDAC.Phys.MySQLDef, FireDAC.VCLUI.Wait, FireDAC.Stan.Param, FireDAC.DatS,
+  FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, Vcl.Buttons, Vcl.Grids, Vcl.DBGrids,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, Vcl.StdCtrls, Vcl.Mask,
+  Vcl.ExtCtrls, Vcl.DBCtrls;
+
+type
+  TForm1 = class(TForm)
+    FDConnection1: TFDConnection;
+    DataSourceFuncionarios: TDataSource;
+    DBGridFuncionarios: TDBGrid;
+    FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
+    DBNavigatorFuncionarios: TDBNavigator;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    Label4: TLabel;
+    DBEdit1: TDBEdit;
+    DBEdit2: TDBEdit;
+    DBEdit3: TDBEdit;
+    DBEdit4: TDBEdit;
+    FDQueryFuncionarios: TFDQuery;
+  private
+    { Private declarations }
+    procedure SetSQLQuery;
+    procedure CheckAndSetSQLQuery(Query: TFDQuery; const SQLText: string);
+  public
+    { Public declarations }
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+{$R *.dfm}
+
+// Método para verificar se o texto da query está vazio e, se não, atribuir o SQL
+procedure TForm1.CheckAndSetSQLQuery(Query: TFDQuery; const SQLText: string);
+begin
+  if SQLText.Trim = '' then
+  begin
+    ShowMessage('A consulta SQL não pode estar vazia!');
+    Exit;
+  end;
+
+  Query.SQL.Text := SQLText;
+end;
+
+// Método para definir os SQLs das queries
+procedure TForm1.SetSQLQuery;
+begin
+  // Verifica e atribui SQL para FDQueryFuncionarios
+  CheckAndSetSQLQuery(FDQueryFuncionarios, 'SELECT * FROM funcionarios');
+
+  // Verifica e atribui SQL para FDQueryFuncionariosCodigo
+  CheckAndSetSQLQuery(FDQueryFuncionariosCodigo, 'SELECT codigo, nome FROM funcionarios');
+
+  // Verifica e atribui SQL para FDQueryFuncionariosNome
+  CheckAndSetSQLQuery(FDQueryFuncionariosNome, 'SELECT nome FROM funcionarios WHERE ativo = 1');
+
+  // Verifica e atribui SQL para FDQueryFuncionariosCPF
+  CheckAndSetSQLQuery(FDQueryFuncionariosCPF, 'SELECT cpf FROM funcionarios WHERE ativo = 1');
+end;
+
+end.
+
